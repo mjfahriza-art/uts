@@ -1,12 +1,12 @@
 @extends('layouts.sbadmin')
 
 @section('content')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div>
-            <h1 class="h3 mb-0 text-gray-800">Gym Dashboard</h1>
-            <p class="text-muted">Lihat statistik, atau langsung kelola member dari sini.</p>
+    <div class="d-sm-flex align-items-start justify-content-between mb-4">
+        <div class="me-3">
+            <h1 class="h3 mb-1 text-gray-800">Gym Dashboard</h1>
+            <p class="text-muted mb-0">Lihat statistik, atau langsung kelola member dari sini.</p>
         </div>
-        <div class="d-flex gap-2 align-items-center">
+        <div class="d-flex gap-2 align-items-start">
             <a href="{{ route('members.index') }}" class="btn btn-sm btn-success">
                 <i class="fas fa-users"></i> Kelola Member
             </a>

@@ -1,12 +1,12 @@
 @extends('layouts.sbadmin')
 
 @section('content')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div>
-            <h1 class="h3 mb-0 text-gray-800">Daftar Member</h1>
-            <p class="text-muted">Tambah, edit, dan hapus data member gym.</p>
+    <div class="d-sm-flex align-items-start justify-content-between mb-4">
+        <div class="me-3">
+            <h1 class="h2 fw-bold mb-1 text-gray-800">Daftar Member</h1>
+            <p class="text-muted mb-0">Tambah, edit, dan hapus data member gym.</p>
         </div>
-        <a href="{{ route('members.create') }}" class="btn btn-primary shadow-sm">
+        <a href="{{ route('members.create') }}" class="btn btn-primary shadow-sm align-self-start">
             <i class="fas fa-plus fa-sm text-white"></i> Tambah Member
         </a>
     </div>

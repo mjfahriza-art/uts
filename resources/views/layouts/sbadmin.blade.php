@@ -14,7 +14,10 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-dumbbell"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Gym Admin</div>
+                <div class="sidebar-brand-text mx-3 text-start">
+                    <div class="fw-bold">Gym</div>
+                    <div class="small text-gray-200">Admin</div>
+                </div>
             </a>
 
             <hr class="sidebar-divider my-0">
