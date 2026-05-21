@@ -1,0 +1,35 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Gym;
+use App\Models\Member;
+use App\Models\Membership;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Membership>
+ */
+class MembershipFactory extends Factory
+{
+    protected $model = Membership::class;
+
+    public function definition(): array
+    {
+        return [
+            'member_id' => Member::factory(),
+            'gym_id' => function (array $attributes) {
+                if (isset($attributes['member_id'])) {
+                    return Member::find($attributes['member_id'])->gym_id;
+                }
+
+                return Gym::factory();
+            },
+            'package' => fake()->randomElement(['Monthly', 'Quarterly', 'Annual']),
+            'price' => fake()->randomFloat(2, 150, 1000),
+            'status' => fake()->randomElement(['active', 'paused', 'expired']),
+            'start_date' => fake()->dateTimeBetween('-2 months', 'now')->format('Y-m-d'),
+            'end_date' => fake()->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+        ];
+    }
+}
