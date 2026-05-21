@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Models\Gym;
 use App\Models\Member;
 use App\Models\Membership;
@@ -16,3 +17,5 @@ Route::get('/dashboard', function () {
         'memberships' => Membership::with(['member', 'gym'])->latest()->get(),
     ]);
 });
+
+Route::resource('members', MemberController::class);

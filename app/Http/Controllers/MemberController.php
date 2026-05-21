@@ -57,6 +57,11 @@ class MemberController extends Controller
         return redirect()->route('members.index')->with('success', 'Member berhasil diperbarui.');
     }
 
+    public function show(Member $member)
+    {
+        return view('members.show', compact('member'));
+    }
+
     public function destroy(Member $member)
     {
         $member->delete();

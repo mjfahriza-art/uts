@@ -1,4 +1,7 @@
-@props(['member' => null, 'gyms'])
+@php
+    $member = $member ?? null;
+    $gyms = $gyms ?? collect();
+@endphp
 
 @if ($errors->any())
     <div class="alert alert-danger">

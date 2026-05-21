@@ -41,6 +41,9 @@
                                 <td>{{ $member->phone ?? '-' }}</td>
                                 <td>{{ $member->gym->name ?? '-' }}</td>
                                 <td class="text-nowrap">
+                                    <a href="{{ route('members.show', $member) }}" class="btn btn-sm btn-info text-white">
+                                        <i class="fas fa-eye"></i> Detail
+                                    </a>
                                     <a href="{{ route('members.edit', $member) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
@@ -63,7 +66,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $members->links() }}
+                {{ $members->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

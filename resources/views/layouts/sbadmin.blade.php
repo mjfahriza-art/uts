@@ -25,6 +25,12 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('members.index') }}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Members</span>
+                </a>
+            </li>
 
             <hr class="sidebar-divider d-none d-md-block">
         </nav>
