@@ -6,6 +6,16 @@
     <title>{{ config('app.name', 'Gym Admin') }} - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Make text more prominent and remove faded/muted opacity */
+        body { color: #111 !important; font-weight: 600 !important; }
+        .text-muted { color: #6c757d !important; opacity: 1 !important; font-weight: 600 !important; }
+        .table th, .table td { font-weight: 600 !important; color: #111 !important; }
+        .sidebar-brand-text .small { font-weight: 500 !important; color: rgba(255,255,255,0.85) !important; }
+        .btn i { margin-right: .45rem; }
+    </style>
 </head>
 <body id="page-top">
     <div id="wrapper">

@@ -47,8 +47,12 @@
         </div>
 
         <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-primary">{{ $member ? 'Update Member' : 'Simpan Member' }}</button>
-            <a href="{{ route('members.index') }}" class="btn btn-secondary">Batal</a>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> {{ $member ? 'Update Member' : 'Simpan Member' }}
+            </button>
+            <a href="{{ route('members.index') }}" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Batal
+            </a>
         </div>
     </div>
 </div>
