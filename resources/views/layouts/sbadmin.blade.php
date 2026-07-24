@@ -65,17 +65,14 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small fw-bold">
-                                        <i class="fas fa-user-circle me-1"></i>{{ Auth::user()->name }}
+                                        <i class="fas fa-user-circle me-1"></i>Administrator
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <form method="POST" action="/logout">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw me-1 text-gray-400"></i>
                                         Logout
                                     </button>
-                                </form>
                                 </div>
                             </li>
                         @else
@@ -90,6 +87,34 @@
 
                 <div class="container-fluid py-4">
                     @yield('content')
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">
+                        <i class="fas fa-sign-out-alt me-2"></i>Konfirmasi Logout
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Apakah anda ingin keluar dari management aplikasi gym?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Batalkan
+                    </button>
+                    <form method="POST" action="/logout" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

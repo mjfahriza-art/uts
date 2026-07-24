@@ -20,7 +20,7 @@
                                     <i class="fas fa-dumbbell"></i>
                                     {{ config('app.name', 'Gym Admin') }}
                                 </h1>
-                                <p class="text-muted">Aplikasi GYM </p>
+                                <p class="text-muted">Sistem aplikasi management GYM </p>
                             </div>
 
                             @if ($errors->any())
@@ -41,7 +41,7 @@
 
                             <div class="alert alert-info py-2 small" role="alert">
                                 <i class="fas fa-info-circle me-1"></i>
-                                <strong>Test Akun:</strong> test@example.com / <strong>password</strong>
+                                <strong>Test Akun:</strong> admingym123@mail.com / <strong>admingym123</strong>
                             </div>
 
                             <form method="POST" action="/login" class="user">
@@ -55,7 +55,7 @@
                                         id="email"
                                         class="form-control form-control-user @error('email') is-invalid @enderror"
                                         placeholder="Masukkan email"
-                                        value="{{ old('email', 'test@example.com') }}"
+                                        value="{{ old('email', 'admingym123@mail.com') }}"
                                         required
                                         autofocus
                                         autocomplete="email"
@@ -70,7 +70,7 @@
                                         id="password"
                                         class="form-control form-control-user @error('password') is-invalid @enderror"
                                         placeholder="Masukkan password"
-                                        value="password"
+                                        value="admingym123"
                                         required
                                         autocomplete="current-password"
                                     >
