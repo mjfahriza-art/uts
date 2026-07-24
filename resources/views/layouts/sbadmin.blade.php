@@ -25,7 +25,7 @@
                     <i class="fas fa-dumbbell"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3 text-start">
-                    <div class="fw-bold">Trainers</div>
+                    <div class="fw-bold">GYM</div>
                     <div class="small text-gray-200">Admin</div>
                 </div>
             </a>
@@ -40,7 +40,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('trainers.index') }}">
-                    <i class="fas fa-fw fa-building"></i>
+                    <i class="fas fa-fw fa-user-tie"></i>
                     <span>Trainers</span>
                 </a>
             </li>

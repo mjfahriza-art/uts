@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-sm-flex align-items-start justify-content-between mb-4">
         <div class="me-3">
-    <h1 class="h3 mb-1 text-gray-800">Dashboard Trainer</h1>
+    <h1 class="h3 mb-1 text-gray-800">Dashboard GYM</h1>
             <p class="text-muted mb-0">Lihat statistik, atau langsung kelola member dari sini.</p>
         </div>
         <div class="d-flex gap-2 align-items-start">
@@ -24,7 +24,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $trainers->count() }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-building fa-2x text-gray-300"></i>
+                            <i class="fas fa-user-tie fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
