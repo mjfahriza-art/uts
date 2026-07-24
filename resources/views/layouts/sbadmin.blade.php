@@ -85,11 +85,6 @@
                                 </a>
                             </li>
                         @endauth
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <a class="nav-link" href="/">
-                                <i class="fas fa-home me-1"></i>Home
-                            </a>
-                        </li>
                     </ul>
                 </nav>
 

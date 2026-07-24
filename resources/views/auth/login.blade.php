@@ -20,7 +20,7 @@
                                     <i class="fas fa-dumbbell"></i>
                                     {{ config('app.name', 'Gym Admin') }}
                                 </h1>
-                                <p class="text-muted">Silakan login untuk melanjutkan</p>
+                                <p class="text-muted">Aplikasi GYM </p>
                             </div>
 
                             @if ($errors->any())
@@ -98,11 +98,11 @@
 
                             <hr>
 
-                            <div class="text-center">
+                            <!-- <div class="text-center">
                                 <a class="small" href="/">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali ke Beranda
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -6,12 +6,12 @@
     <h1 class="h3 mb-1 text-gray-800">Dashboard GYM</h1>
             <p class="text-muted mb-0">Lihat statistik, atau langsung kelola member dari sini.</p>
         </div>
-        <div class="d-flex gap-2 align-items-start">
+        <!-- <div class="d-flex gap-2 align-items-start">
             <a href="{{ route('members.index') }}" class="btn btn-sm btn-success">
                 <i class="fas fa-users"></i> Kelola Member
             </a>
             <a href="{{ url('/') }}" class="btn btn-sm btn-primary">Back to Welcome</a>
-        </div>
+        </div> -->
     </div>
 
     <div class="row">
