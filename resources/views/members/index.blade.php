@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-start justify-content-between mb-4">
         <div class="me-3">
             <h1 class="h2 fw-bold mb-1 text-gray-800">Daftar Member</h1>
-            <p class="text-muted mb-0">Tambah, edit, dan hapus data member gym.</p>
+            <p class="text-muted mb-0">Tambah, edit, dan hapus data member trainer.</p>
         </div>
         <a href="{{ route('members.create') }}" class="btn btn-primary shadow-sm align-self-start">
             <i class="fas fa-plus fa-sm text-white"></i> Tambah Member
@@ -28,7 +28,8 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Telepon</th>
-                            <th>Gym</th>
+                            <th>Trainer</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -40,6 +41,13 @@
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->phone ?? '-' }}</td>
                                 <td>{{ $member->gym->name ?? '-' }}</td>
+                                <td>
+                                    @if($member->is_active)
+                                        <span class="badge bg-success">Aktif</span>
+                                    @else
+                                        <span class="badge bg-secondary">Tidak Aktif</span>
+                                    @endif
+                                </td>
                                 <td class="text-nowrap">
                                     <a href="{{ route('members.show', $member) }}" class="btn btn-sm btn-info text-white">
                                         <i class="fas fa-eye"></i> Detail
@@ -47,6 +55,19 @@
                                     <a href="{{ route('members.edit', $member) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
+                                    <form action="{{ route('members.toggle-status', $member) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        @if($member->is_active)
+                                            <button type="submit" class="btn btn-sm btn-secondary" title="Nonaktifkan">
+                                                <i class="fas fa-ban"></i> Nonaktifkan
+                                            </button>
+                                        @else
+                                            <button type="submit" class="btn btn-sm btn-success" title="Aktifkan">
+                                                <i class="fas fa-check-circle"></i> Aktifkan
+                                            </button>
+                                        @endif
+                                    </form>
                                     <form action="{{ route('members.destroy', $member) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus member ini?');">
                                         @csrf
                                         @method('DELETE')
@@ -58,7 +79,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">Belum ada member, silakan tambah data.</td>
+                                <td colspan="7" class="text-center">Belum ada member, silakan tambah data.</td>
                             </tr>
                         @endforelse
                     </tbody>

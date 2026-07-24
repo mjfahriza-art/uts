@@ -15,7 +15,7 @@ class GymFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->company() . ' Gym',
+            'name' => fake()->company() . ' Trainer',
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
         ];

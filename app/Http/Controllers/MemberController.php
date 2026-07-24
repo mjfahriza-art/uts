@@ -50,11 +50,23 @@ class MemberController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:members,email,' . $member->id],
             'phone' => ['nullable', 'string', 'max:50'],
+            'is_active' => ['nullable', 'boolean'],
         ]);
 
         $member->update($data);
 
         return redirect()->route('members.index')->with('success', 'Member berhasil diperbarui.');
+    }
+
+    public function toggleStatus(Member $member)
+    {
+        $member->update([
+            'is_active' => !$member->is_active,
+        ]);
+
+        $status = $member->is_active ? 'diaktifkan' : 'dinonaktifkan';
+
+        return redirect()->route('members.index')->with('success', "Status member berhasil {$status}.");
     }
 
     public function show(Member $member)

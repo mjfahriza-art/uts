@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-sm-flex align-items-start justify-content-between mb-4">
         <div class="me-3">
-            <h1 class="h3 mb-1 text-gray-800">Gym Dashboard</h1>
+    <h1 class="h3 mb-1 text-gray-800">GYM Dashboard</h1>
             <p class="text-muted mb-0">Lihat statistik, atau langsung kelola member dari sini.</p>
         </div>
         <div class="d-flex gap-2 align-items-start">
@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gyms</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Trainers</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $gyms->count() }}</div>
                         </div>
                         <div class="col-auto">
@@ -68,7 +68,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Gyms</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Trainers</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -78,6 +78,7 @@
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Members</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,6 +87,14 @@
                                         <td>{{ $gym->name }}</td>
                                         <td>{{ $gym->address }}</td>
                                         <td>{{ $gym->members_count }}</td>
+                                        <td class="text-nowrap">
+                                            <a href="{{ route('trainers.show', $gym) }}" class="btn btn-sm btn-info text-white">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{ route('trainers.edit', $gym) }}" class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -106,7 +115,7 @@
                             <thead>
                                 <tr>
                                     <th>Member</th>
-                                    <th>Gym</th>
+                                    <th>Trainer</th>
                                     <th>Package</th>
                                     <th>Status</th>
                                 </tr>

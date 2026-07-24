@@ -22,9 +22,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="gym_id" class="form-label">Gym</label>
+            <label for="gym_id" class="form-label">Trainer</label>
             <select id="gym_id" name="gym_id" class="form-select">
-                <option value="">Pilih Gym</option>
+                <option value="">Pilih Trainer</option>
                 @foreach ($gyms as $gym)
                     <option value="{{ $gym->id }}" {{ old('gym_id', $member->gym_id ?? '') == $gym->id ? 'selected' : '' }}>{{ $gym->name }}</option>
                 @endforeach
@@ -45,6 +45,16 @@
             <label for="phone" class="form-label">Telepon</label>
             <input id="phone" name="phone" type="text" class="form-control" value="{{ old('phone', $member->phone ?? '') }}" placeholder="0812xxxxxxx">
         </div>
+
+        @if($member)
+        <div class="mb-3">
+            <label for="is_active" class="form-label">Status</label>
+            <select id="is_active" name="is_active" class="form-select">
+                <option value="1" {{ old('is_active', $member->is_active ?? '') == 1 ? 'selected' : '' }}>Aktif</option>
+                <option value="0" {{ old('is_active', $member->is_active ?? '') === 0 || old('is_active', $member->is_active ?? '') === '0' ? 'selected' : '' }}>Tidak Aktif</option>
+            </select>
+        </div>
+        @endif
 
         <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary">

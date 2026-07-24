@@ -25,7 +25,7 @@
                     <i class="fas fa-dumbbell"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3 text-start">
-                    <div class="fw-bold">Gym</div>
+                    <div class="fw-bold">Trainers</div>
                     <div class="small text-gray-200">Admin</div>
                 </div>
             </a>
@@ -36,6 +36,12 @@
                 <a class="nav-link" href="{{ url('/dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('trainers.index') }}">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Trainers</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -55,8 +61,34 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="navbar-nav ml-auto">
+                        @auth
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small fw-bold">
+                                        <i class="fas fa-user-circle me-1"></i>{{ Auth::user()->name }}
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-1 text-gray-400"></i>
+                                            Logout
+                                        </button>
+                                    </form>
+                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fas fa-sign-in-alt me-1"></i>Login
+                                </a>
+                            </li>
+                        @endauth
                         <li class="nav-item d-none d-sm-inline-block">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link" href="{{ url('/') }}">
+                                <i class="fas fa-home me-1"></i>Home
+                            </a>
                         </li>
                     </ul>
                 </nav>

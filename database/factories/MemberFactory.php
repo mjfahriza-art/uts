@@ -20,6 +20,7 @@ class MemberFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->phoneNumber(),
+            'is_active' => fake()->boolean(80),
         ];
     }
 }

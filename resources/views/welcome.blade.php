@@ -48,7 +48,7 @@
             @endif
             <div class="mt-6">
                 <a href="{{ url('/dashboard') }}" class="inline-flex items-center justify-center rounded-sm bg-[#F53003] px-5 py-2 text-sm font-semibold text-white hover:bg-[#d12700]">
-                    Open Gym Dashboard
+                    Open Trainers Dashboard
                 </a>
             </div>
         </header>

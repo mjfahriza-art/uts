@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div>
             <h1 class="h3 mb-0 text-gray-800">Detail Member</h1>
-            <p class="text-muted">Informasi lengkap tentang member gym.</p>
+            <p class="text-muted">Informasi lengkap tentang member trainer.</p>
         </div>
         <a href="{{ route('members.index') }}" class="btn btn-secondary shadow-sm">
             <i class="fas fa-arrow-left"></i> Kembali
@@ -31,12 +31,22 @@
                         <div class="col-sm-8">{{ $member->phone ?? '-' }}</div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-sm-4 text-muted">Gym</div>
+                        <div class="col-sm-4 text-muted">Trainer</div>
                         <div class="col-sm-8">{{ $member->gym->name ?? '-' }}</div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-sm-4 text-muted">Alamat Gym</div>
+                        <div class="col-sm-4 text-muted">Alamat Trainer</div>
                         <div class="col-sm-8">{{ $member->gym->address ?? '-' }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">Status</div>
+                        <div class="col-sm-8">
+                            @if($member->is_active)
+                                <span class="badge bg-success">Aktif</span>
+                            @else
+                                <span class="badge bg-secondary">Tidak Aktif</span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="d-flex gap-2 mt-4">
