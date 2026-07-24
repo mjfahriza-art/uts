@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->constrained('members')->cascadeOnDelete();
-            $table->foreignId('gym_id')->constrained('gyms')->cascadeOnDelete();
+            $table->foreignId('trainer_id')->constrained('trainers')->cascadeOnDelete();
             $table->string('package');
             $table->decimal('price', 10, 2);
             $table->string('status')->default('active');

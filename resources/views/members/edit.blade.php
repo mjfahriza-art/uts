@@ -14,7 +14,7 @@
     <form action="{{ route('members.update', $member) }}" method="POST">
         @csrf
         @method('PUT')
-        @include('members.form', ['member' => $member, 'gyms' => $gyms])
+        @include('members.form', ['member' => $member, 'trainers' => $trainers])
     </form>
 @endsection
 

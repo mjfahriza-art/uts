@@ -8,17 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
 #[Fillable(['name', 'address', 'phone'])]
-class Gym extends Model
+class Trainer extends Model
 {
     use HasFactory;
 
+    protected $table = 'trainers';
+
     public function members(): HasMany
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class, 'trainer_id');
     }
 
     public function memberships(): HasMany
     {
-        return $this->hasMany(Membership::class);
+        return $this->hasMany(Membership::class, 'trainer_id');
     }
 }
+

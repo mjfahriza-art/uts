@@ -32,11 +32,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 text-muted">Trainer</div>
-                        <div class="col-sm-8">{{ $member->gym->name ?? '-' }}</div>
+                        <div class="col-sm-8">{{ $member->trainer->name ?? '-' }}</div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 text-muted">Alamat Trainer</div>
-                        <div class="col-sm-8">{{ $member->gym->address ?? '-' }}</div>
+                        <div class="col-sm-8">{{ $member->trainer->address ?? '-' }}</div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 text-muted">Status</div>

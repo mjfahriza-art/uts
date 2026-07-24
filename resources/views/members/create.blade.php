@@ -13,6 +13,6 @@
 
     <form action="{{ route('members.store') }}" method="POST">
         @csrf
-        @include('members.form', ['gyms' => $gyms])
+        @include('members.form', ['trainers' => $trainers])
     </form>
 @endsection

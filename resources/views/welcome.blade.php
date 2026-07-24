@@ -23,14 +23,14 @@
                 <nav class="flex items-center justify-end gap-4">
                     @auth
                         <a
-                            href="{{ url('/dashboard') }}"
+                            href="/dashboard"
                             class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
                         >
                             Dashboard
                         </a>
                     @else
                         <a
-                            href="{{ route('login') }}"
+                            href="/login"
                             class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
                         >
                             Log in
@@ -47,7 +47,7 @@
                 </nav>
             @endif
             <div class="mt-6">
-                <a href="{{ url('/dashboard') }}" class="inline-flex items-center justify-center rounded-sm bg-[#F53003] px-5 py-2 text-sm font-semibold text-white hover:bg-[#d12700]">
+                <a href="/dashboard" class="inline-flex items-center justify-center rounded-sm bg-[#F53003] px-5 py-2 text-sm font-semibold text-white hover:bg-[#d12700]">
                     Open Trainers Dashboard
                 </a>
             </div>

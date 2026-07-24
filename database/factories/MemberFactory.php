@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Gym;
+use App\Models\Trainer;
 use App\Models\Member;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,7 +16,7 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'gym_id' => Gym::factory(),
+            'trainer_id' => Trainer::factory(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->phoneNumber(),

@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Gym;
+use App\Models\Trainer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Gym>
+ * @extends Factory<Trainer>
  */
-class GymFactory extends Factory
+class TrainerFactory extends Factory
 {
-    protected $model = Gym::class;
+    protected $model = Trainer::class;
 
     public function definition(): array
     {
@@ -21,3 +21,4 @@ class GymFactory extends Factory
         ];
     }
 }
+

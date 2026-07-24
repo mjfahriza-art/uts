@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gym;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
 {
     public function index()
     {
-        $trainers = Gym::withCount('members')->latest()->paginate(10);
+        $trainers = Trainer::withCount('members')->latest()->paginate(10);
 
         return view('trainers.index', compact('trainers'));
     }
@@ -27,19 +27,19 @@ class TrainerController extends Controller
             'phone' => ['nullable', 'string', 'max:50'],
         ]);
 
-        Gym::create($data);
+        Trainer::create($data);
 
         return redirect()->route('trainers.index')->with('success', 'Trainer berhasil ditambahkan.');
     }
 
-    public function edit(Gym $trainer)
+    public function edit(Trainer $trainer)
     {
         $trainer->loadCount('members');
 
         return view('trainers.edit', compact('trainer'));
     }
 
-    public function update(Request $request, Gym $trainer)
+    public function update(Request $request, Trainer $trainer)
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -52,7 +52,7 @@ class TrainerController extends Controller
         return redirect()->route('trainers.index')->with('success', 'Trainer berhasil diperbarui.');
     }
 
-    public function show(Gym $trainer)
+    public function show(Trainer $trainer)
     {
         $trainer->loadCount('members');
         $trainer->load('members');
@@ -60,7 +60,7 @@ class TrainerController extends Controller
         return view('trainers.show', compact('trainer'));
     }
 
-    public function destroy(Gym $trainer)
+    public function destroy(Trainer $trainer)
     {
         $trainer->delete();
 

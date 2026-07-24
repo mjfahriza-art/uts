@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gym;
+use App\Models\Trainer;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -10,22 +10,22 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = Member::with('gym')->latest()->paginate(10);
+        $members = Member::with('trainer')->latest()->paginate(10);
 
         return view('members.index', compact('members'));
     }
 
     public function create()
     {
-        $gyms = Gym::orderBy('name')->get();
+        $trainers = Trainer::orderBy('name')->get();
 
-        return view('members.create', compact('gyms'));
+        return view('members.create', compact('trainers'));
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'gym_id' => ['required', 'exists:gyms,id'],
+            'trainer_id' => ['required', 'exists:trainers,id'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:members,email'],
             'phone' => ['nullable', 'string', 'max:50'],
@@ -38,15 +38,15 @@ class MemberController extends Controller
 
     public function edit(Member $member)
     {
-        $gyms = Gym::orderBy('name')->get();
+        $trainers = Trainer::orderBy('name')->get();
 
-        return view('members.edit', compact('member', 'gyms'));
+        return view('members.edit', compact('member', 'trainers'));
     }
 
     public function update(Request $request, Member $member)
     {
         $data = $request->validate([
-            'gym_id' => ['required', 'exists:gyms,id'],
+            'trainer_id' => ['required', 'exists:trainers,id'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:members,email,' . $member->id],
             'phone' => ['nullable', 'string', 'max:50'],

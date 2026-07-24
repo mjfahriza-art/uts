@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['member_id', 'gym_id', 'package', 'price', 'status', 'start_date', 'end_date'])]
+#[Fillable(['member_id', 'trainer_id', 'package', 'price', 'status', 'start_date', 'end_date'])]
 class Membership extends Model
 {
     use HasFactory;
@@ -17,8 +17,8 @@ class Membership extends Model
         return $this->belongsTo(Member::class);
     }
 
-    public function gym(): BelongsTo
+    public function trainer(): BelongsTo
     {
-        return $this->belongsTo(Gym::class);
+        return $this->belongsTo(Trainer::class, 'trainer_id');
     }
 }

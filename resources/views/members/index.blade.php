@@ -40,7 +40,7 @@
                                 <td>{{ $member->name }}</td>
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->phone ?? '-' }}</td>
-                                <td>{{ $member->gym->name ?? '-' }}</td>
+                                <td>{{ $member->trainer->name ?? '-' }}</td>
                                 <td>
                                     @if($member->is_active)
                                         <span class="badge bg-success">Aktif</span>

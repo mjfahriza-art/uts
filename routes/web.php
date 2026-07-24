@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TrainerController;
-use App\Models\Gym;
+use App\Models\Trainer;
 use App\Models\Member;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +19,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
-            'gyms' => Gym::withCount('members')->get(),
-            'members' => Member::with('gym')->get(),
-            'memberships' => Membership::with(['member', 'gym'])->latest()->get(),
+            'trainers' => Trainer::withCount('members')->get(),
+            'members' => Member::with('trainer')->get(),
+            'memberships' => Membership::with(['member', 'trainer'])->latest()->get(),
         ]);
     });
 

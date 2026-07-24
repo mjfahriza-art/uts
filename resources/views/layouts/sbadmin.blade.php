@@ -20,7 +20,7 @@
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-dumbbell"></i>
                 </div>
@@ -33,7 +33,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/dashboard') }}">
+                <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -69,24 +69,24 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-1 text-gray-400"></i>
-                                            Logout
-                                        </button>
-                                    </form>
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-1 text-gray-400"></i>
+                                        Logout
+                                    </button>
+                                </form>
                                 </div>
                             </li>
                         @else
                             <li class="nav-item d-none d-sm-inline-block">
-                                <a class="nav-link" href="{{ route('login') }}">
+                                <a class="nav-link" href="/login">
                                     <i class="fas fa-sign-in-alt me-1"></i>Login
                                 </a>
                             </li>
                         @endauth
                         <li class="nav-item d-none d-sm-inline-block">
-                            <a class="nav-link" href="{{ url('/') }}">
+                            <a class="nav-link" href="/">
                                 <i class="fas fa-home me-1"></i>Home
                             </a>
                         </li>

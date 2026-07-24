@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['gym_id', 'name', 'email', 'phone', 'is_active'])]
+#[Fillable(['trainer_id', 'name', 'email', 'phone', 'is_active'])]
 class Member extends Model
 {
     use HasFactory;
 
-    public function gym(): BelongsTo
+    public function trainer(): BelongsTo
     {
-        return $this->belongsTo(Gym::class);
+        return $this->belongsTo(Trainer::class, 'trainer_id');
     }
 
     public function memberships(): HasMany

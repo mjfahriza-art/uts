@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Gym;
+use App\Models\Trainer;
 use App\Models\Member;
 use App\Models\Membership;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -18,12 +18,12 @@ class MembershipFactory extends Factory
     {
         return [
             'member_id' => Member::factory(),
-            'gym_id' => function (array $attributes) {
+            'trainer_id' => function (array $attributes) {
                 if (isset($attributes['member_id'])) {
-                    return Member::find($attributes['member_id'])->gym_id;
+                    return Member::find($attributes['member_id'])->trainer_id;
                 }
 
-                return Gym::factory();
+                return Trainer::factory();
             },
             'package' => fake()->randomElement(['Monthly', 'Quarterly', 'Annual']),
             'price' => fake()->randomFloat(2, 150, 1000),

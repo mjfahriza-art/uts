@@ -1,6 +1,6 @@
 @php
     $member = $member ?? null;
-    $gyms = $gyms ?? collect();
+    $trainers = $trainers ?? collect();
 @endphp
 
 @if ($errors->any())
@@ -22,11 +22,11 @@
         </div>
 
         <div class="mb-3">
-            <label for="gym_id" class="form-label">Trainer</label>
-            <select id="gym_id" name="gym_id" class="form-select">
+            <label for="trainer_id" class="form-label">Trainer</label>
+            <select id="trainer_id" name="trainer_id" class="form-select">
                 <option value="">Pilih Trainer</option>
-                @foreach ($gyms as $gym)
-                    <option value="{{ $gym->id }}" {{ old('gym_id', $member->gym_id ?? '') == $gym->id ? 'selected' : '' }}>{{ $gym->name }}</option>
+                @foreach ($trainers as $trainer)
+                    <option value="{{ $trainer->id }}" {{ old('trainer_id', $member->trainer_id ?? '') == $trainer->id ? 'selected' : '' }}>{{ $trainer->name }}</option>
                 @endforeach
             </select>
         </div>

@@ -39,7 +39,12 @@
                                 </div>
                             @endif
 
-                            <form method="POST" action="{{ route('login') }}" class="user">
+                            <div class="alert alert-info py-2 small" role="alert">
+                                <i class="fas fa-info-circle me-1"></i>
+                                <strong>Test Akun:</strong> test@example.com / <strong>password</strong>
+                            </div>
+
+                            <form method="POST" action="/login" class="user">
                                 @csrf
 
                                 <div class="form-group mb-3">
@@ -50,7 +55,7 @@
                                         id="email"
                                         class="form-control form-control-user @error('email') is-invalid @enderror"
                                         placeholder="Masukkan email"
-                                        value="{{ old('email') }}"
+                                        value="{{ old('email', 'test@example.com') }}"
                                         required
                                         autofocus
                                         autocomplete="email"
@@ -65,6 +70,7 @@
                                         id="password"
                                         class="form-control form-control-user @error('password') is-invalid @enderror"
                                         placeholder="Masukkan password"
+                                        value="password"
                                         required
                                         autocomplete="current-password"
                                     >
@@ -93,7 +99,7 @@
                             <hr>
 
                             <div class="text-center">
-                                <a class="small" href="{{ url('/') }}">
+                                <a class="small" href="/">
                                     <i class="fas fa-arrow-left me-1"></i> Kembali ke Beranda
                                 </a>
                             </div>

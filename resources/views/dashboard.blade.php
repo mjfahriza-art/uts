@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-sm-flex align-items-start justify-content-between mb-4">
         <div class="me-3">
-    <h1 class="h3 mb-1 text-gray-800">GYM Dashboard</h1>
+    <h1 class="h3 mb-1 text-gray-800">Dashboard Trainer</h1>
             <p class="text-muted mb-0">Lihat statistik, atau langsung kelola member dari sini.</p>
         </div>
         <div class="d-flex gap-2 align-items-start">
@@ -21,7 +21,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Trainers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $gyms->count() }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $trainers->count() }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-building fa-2x text-gray-300"></i>
@@ -82,16 +82,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($gyms as $gym)
+                                @foreach($trainers as $trainer)
                                     <tr>
-                                        <td>{{ $gym->name }}</td>
-                                        <td>{{ $gym->address }}</td>
-                                        <td>{{ $gym->members_count }}</td>
+                                        <td>{{ $trainer->name }}</td>
+                                        <td>{{ $trainer->address }}</td>
+                                        <td>{{ $trainer->members_count }}</td>
                                         <td class="text-nowrap">
-                                            <a href="{{ route('trainers.show', $gym) }}" class="btn btn-sm btn-info text-white">
+                                            <a href="{{ route('trainers.show', $trainer) }}" class="btn btn-sm btn-info text-white">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('trainers.edit', $gym) }}" class="btn btn-sm btn-warning">
+                                            <a href="{{ route('trainers.edit', $trainer) }}" class="btn btn-sm btn-warning">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </td>
@@ -124,7 +124,7 @@
                                 @foreach($memberships->take(8) as $membership)
                                     <tr>
                                         <td>{{ $membership->member->name }}</td>
-                                        <td>{{ $membership->gym->name }}</td>
+                                        <td>{{ $membership->trainer->name }}</td>
                                         <td>{{ $membership->package }}</td>
                                         <td>{{ ucfirst($membership->status) }}</td>
                                     </tr>
