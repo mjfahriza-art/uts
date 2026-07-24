@@ -12,6 +12,15 @@ class Membership extends Model
 {
     use HasFactory;
 
+    protected function casts(): array
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'price' => 'decimal:2',
+        ];
+    }
+
     public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class);

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\TrainerController;
 use App\Models\Trainer;
 use App\Models\Member;
@@ -9,7 +10,7 @@ use App\Models\Membership;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -28,4 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('members', MemberController::class);
     Route::patch('members/{member}/toggle-status', [MemberController::class, 'toggleStatus'])->name('members.toggle-status');
     Route::resource('trainers', TrainerController::class);
+    Route::resource('memberships', MembershipController::class);
 });
