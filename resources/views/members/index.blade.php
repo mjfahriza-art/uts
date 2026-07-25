@@ -28,6 +28,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>#</th>
+                            <th>Foto</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Telepon</th>
@@ -40,6 +41,13 @@
                         @forelse($members as $member)
                             <tr>
                                 <td>{{ $loop->iteration + ($members->currentPage() - 1) * $members->perPage() }}</td>
+                                <td>
+                                    @if($member->photo)
+                                        <img src="{{ asset('storage/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>{{ $member->name }}</td>
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->phone ?? '-' }}</td>
@@ -82,7 +90,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">Belum ada member, silakan tambah data.</td>
+                                <td colspan="8" class="text-center">Belum ada member, silakan tambah data.</td>
                             </tr>
                         @endforelse
                     </tbody>

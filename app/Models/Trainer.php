@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['name', 'address', 'phone'])]
+#[Fillable(['name', 'address', 'phone', 'photo'])]
 class Trainer extends Model
 {
     use HasFactory;

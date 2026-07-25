@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
             'members' => Member::with('trainer')->get(),
             'memberships' => Membership::with(['member', 'trainer'])->latest()->get(),
         ]);
-    });
+    })->name('dashboard');
 
     Route::resource('members', MemberController::class);
     Route::patch('members/{member}/toggle-status', [MemberController::class, 'toggleStatus'])->name('members.toggle-status');

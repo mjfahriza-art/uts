@@ -29,6 +29,7 @@
                         <tr>
                             <th>#</th>
                             <th>ID</th>
+                            <th>Foto</th>
                             <th>Nama</th>
                             <th>No. HP</th>
                             <th>Alamat</th>
@@ -41,6 +42,13 @@
                             <tr>
                                 <td>{{ $loop->iteration + ($trainers->currentPage() - 1) * $trainers->perPage() }}</td>
                                 <td>{{ $trainer->id }}</td>
+                                <td>
+                                    @if($trainer->photo)
+                                        <img src="{{ asset('storage/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>{{ $trainer->name }}</td>
                                 <td>{{ $trainer->phone ?? '-' }}</td>
                                 <td>{{ $trainer->address }}</td>
@@ -63,7 +71,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">Belum ada trainer, silakan tambah data.</td>
+                                <td colspan="8" class="text-center">Belum ada trainer, silakan tambah data.</td>
                             </tr>
                         @endforelse
                     </tbody>

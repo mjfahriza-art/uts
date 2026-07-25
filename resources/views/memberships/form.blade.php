@@ -68,6 +68,19 @@
             </div>
         </div>
 
+        @if($membership)
+        <div class="mb-3">
+            <label for="photo" class="form-label">Foto</label>
+            @if($membership->photo)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $membership->photo) }}" alt="Foto Membership" class="img-thumbnail" style="max-height: 150px;">
+                </div>
+            @endif
+            <input id="photo" name="photo" type="file" class="form-control" accept="image/*">
+            <small class="text-muted">Kosongkan jika tidak ingin mengganti foto. Format: jpg, jpeg, png, webp. Maks: 2MB.</small>
+        </div>
+        @endif
+
         <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select id="status" name="status" class="form-select" required>

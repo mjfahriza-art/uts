@@ -42,6 +42,19 @@
             <textarea id="address" name="address" class="form-control" rows="3" placeholder="Masukkan alamat trainer" required>{{ old('address', $trainer->address ?? '') }}</textarea>
         </div>
 
+        @if($trainer)
+        <div class="mb-3">
+            <label for="photo" class="form-label">Foto</label>
+            @if($trainer->photo)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="max-height: 150px;">
+                </div>
+            @endif
+            <input id="photo" name="photo" type="file" class="form-control" accept="image/*">
+            <small class="text-muted">Kosongkan jika tidak ingin mengganti foto. Format: jpg, jpeg, png, webp. Maks: 2MB.</small>
+        </div>
+        @endif
+
         <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary">
                 <i class="fas fa-save"></i> {{ $trainer ? 'Update Trainer' : 'Simpan Trainer' }}

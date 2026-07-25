@@ -51,7 +51,16 @@ class MemberController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:members,email,' . $member->id],
             'phone' => ['nullable', 'string', 'max:50'],
             'is_active' => ['nullable', 'boolean'],
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            // Hapus foto lama jika ada
+            if ($member->photo && \Storage::disk('public')->exists($member->photo)) {
+                \Storage::disk('public')->delete($member->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
 
         $member->update($data);
 

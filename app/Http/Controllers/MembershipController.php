@@ -66,7 +66,16 @@ class MembershipController extends Controller
             'status' => ['required', 'in:active,inactive,suspended,cancelled,expired'],
             'start_date' => ['required', 'date'],
             'end_date' => ['required', 'date', 'after_or_equal:start_date'],
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            // Hapus foto lama jika ada
+            if ($membership->photo && \Storage::disk('public')->exists($membership->photo)) {
+                \Storage::disk('public')->delete($membership->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
 
         $membership->update($data);
 

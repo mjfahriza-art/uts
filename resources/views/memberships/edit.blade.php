@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <form action="{{ route('memberships.update', $membership) }}" method="POST">
+    <form action="{{ route('memberships.update', $membership) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('memberships.form', ['membership' => $membership, 'members' => $members, 'trainers' => $trainers])

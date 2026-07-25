@@ -45,7 +45,16 @@ class TrainerController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
+
+        if ($request->hasFile('photo')) {
+            // Hapus foto lama jika ada
+            if ($trainer->photo && \Storage::disk('public')->exists($trainer->photo)) {
+                \Storage::disk('public')->delete($trainer->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
 
         $trainer->update($data);
 

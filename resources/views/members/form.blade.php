@@ -54,6 +54,17 @@
                 <option value="0" {{ old('is_active', $member->is_active ?? '') === 0 || old('is_active', $member->is_active ?? '') === '0' ? 'selected' : '' }}>Tidak Aktif</option>
             </select>
         </div>
+
+        <div class="mb-3">
+            <label for="photo" class="form-label">Foto</label>
+            @if($member->photo)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="max-height: 150px;">
+                </div>
+            @endif
+            <input id="photo" name="photo" type="file" class="form-control" accept="image/*">
+            <small class="text-muted">Kosongkan jika tidak ingin mengganti foto. Format: jpg, jpeg, png, webp. Maks: 2MB.</small>
+        </div>
         @endif
 
         <div class="d-flex gap-2">

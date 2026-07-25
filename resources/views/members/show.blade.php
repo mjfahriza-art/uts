@@ -18,6 +18,11 @@
                     <h6 class="m-0 font-weight-bold text-primary">Profil Member</h6>
                 </div>
                 <div class="card-body">
+                    @if($member->photo)
+                        <div class="text-center mb-4">
+                            <img src="{{ asset('storage/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: contain;">
+                        </div>
+                    @endif
                     <div class="row mb-3">
                         <div class="col-sm-4 text-muted">Nama</div>
                         <div class="col-sm-8">{{ $member->name }}</div>
