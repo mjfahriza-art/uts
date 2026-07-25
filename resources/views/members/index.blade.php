@@ -66,19 +66,6 @@
                                     <a href="{{ route('members.edit', $member) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ route('members.toggle-status', $member) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('PATCH')
-                                        @if($member->is_active)
-                                            <button type="submit" class="btn btn-sm btn-secondary" title="Nonaktifkan">
-                                                <i class="fas fa-ban"></i> Nonaktifkan
-                                            </button>
-                                        @else
-                                            <button type="submit" class="btn btn-sm btn-success" title="Aktifkan">
-                                                <i class="fas fa-check-circle"></i> Aktifkan
-                                            </button>
-                                        @endif
-                                    </form>
                                     <form action="{{ route('members.destroy', $member) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus member ini?');">
                                         @csrf
                                         @method('DELETE')

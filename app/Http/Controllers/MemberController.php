@@ -67,17 +67,6 @@ class MemberController extends Controller
         return redirect()->route('members.index')->with('success', 'Member berhasil diperbarui.');
     }
 
-    public function toggleStatus(Member $member)
-    {
-        $member->update([
-            'is_active' => !$member->is_active,
-        ]);
-
-        $status = $member->is_active ? 'diaktifkan' : 'dinonaktifkan';
-
-        return redirect()->route('members.index')->with('success', "Status member berhasil {$status}.");
-    }
-
     public function show(Member $member)
     {
         return view('members.show', compact('member'));

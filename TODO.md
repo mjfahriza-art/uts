@@ -1,10 +1,8 @@
-# TODO: Fitur Foto untuk Trainers, Members, Memberships
+# TODO - Hapus Tombol Toggle Status Member
 
-- [x] 1. Migration - tambah kolom `photo` ke tabel trainers, members, memberships
-- [x] 2. Update Models - tambah `photo` ke $fillable
-- [x] 3. Update Controllers - upload foto hanya di update (edit)
-- [x] 4. Update Form Views - input file foto hanya di form edit
-- [x] 5. Update Index Views - thumbnail foto di tabel
-- [x] 6. Update Show Views - foto besar di detail
-- [x] 7. Storage link & migrate
+- [x] 1. Hapus form/button toggle status di `resources/views/members/index.blade.php`
+- [x] 2. Hapus method `toggleStatus()` di `app/Http/Controllers/MemberController.php`
+- [x] 3. Hapus route `members.toggle-status` di `routes/web.php`
+
+✅ Semua selesai!
 
