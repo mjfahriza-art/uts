@@ -25,7 +25,7 @@ class MembershipFactory extends Factory
 
                 return Trainer::factory();
             },
-            'package' => fake()->randomElement(['Monthly', 'Quarterly', 'Annual']),
+'package' => fake()->randomElement(['gold', 'silver', 'bronze']),
             'price' => fake()->randomFloat(2, 150, 1000),
             'status' => fake()->randomElement(['active', 'paused', 'expired']),
             'start_date' => fake()->dateTimeBetween('-2 months', 'now')->format('Y-m-d'),

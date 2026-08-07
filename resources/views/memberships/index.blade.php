@@ -29,7 +29,6 @@
                         <tr>
                             <th>#</th>
                             <th>ID</th>
-                            <th>Foto</th>
                             <th>Member</th>
                             <th>Trainer</th>
                             <th>Paket</th>
@@ -45,13 +44,6 @@
                             <tr>
                                 <td>{{ $loop->iteration + ($memberships->currentPage() - 1) * $memberships->perPage() }}</td>
                                 <td>{{ $membership->id }}</td>
-                                <td>
-                                    @if($membership->photo)
-                                        <img src="{{ asset('storage/' . $membership->photo) }}" alt="Foto Membership" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
-                                    @else
-                                        <span class="text-muted">-</span>
-                                    @endif
-                                </td>
                                 <td>{{ $membership->member->name ?? '-' }}</td>
                                 <td>{{ $membership->trainer->name ?? '-' }}</td>
                                 <td>{{ $membership->package }}</td>
@@ -91,7 +83,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="11" class="text-center">Belum ada membership, silakan tambah data.</td>
+                                <td colspan="10" class="text-center">Belum ada membership, silakan tambah data.</td>
                             </tr>
                         @endforelse
                     </tbody>

@@ -18,11 +18,6 @@
                     <h6 class="m-0 font-weight-bold text-primary">Informasi Membership</h6>
                 </div>
                 <div class="card-body">
-                    @if($membership->photo)
-                        <div class="text-center mb-4">
-                            <img src="{{ asset('storage/' . $membership->photo) }}" alt="Foto Membership" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: contain;">
-                        </div>
-                    @endif
                     <div class="row mb-3">
                         <div class="col-sm-4 text-muted">ID Membership</div>
                         <div class="col-sm-8">{{ $membership->id }}</div>
@@ -97,4 +92,3 @@
         </div>
     </div>
 @endsection
-

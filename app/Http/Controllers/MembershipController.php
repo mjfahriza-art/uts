@@ -11,9 +11,18 @@ class MembershipController extends Controller
 {
     public function index()
     {
+        $this->autoExpire();
+
         $memberships = Membership::with(['member', 'trainer'])->latest()->paginate(10);
 
         return view('memberships.index', compact('memberships'));
+    }
+
+    protected function autoExpire(): void
+    {
+        Membership::where('status', 'active')
+            ->where('end_date', '<', now()->toDateString())
+            ->update(['status' => 'expired']);
     }
 
     public function create()
@@ -24,7 +33,7 @@ class MembershipController extends Controller
         return view('memberships.create', compact('members', 'trainers'));
     }
 
-    public function store(Request $request)
+public function store(Request $request)
     {
         $data = $request->validate([
             'member_id' => ['required', 'exists:members,id'],
@@ -32,17 +41,53 @@ class MembershipController extends Controller
             'package' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
             'status' => ['required', 'in:active,inactive,suspended,cancelled,expired'],
-            'start_date' => ['required', 'date'],
-            'end_date' => ['required', 'date', 'after_or_equal:start_date'],
+            'duration_quantity' => ['required', 'integer', 'min:1'],
+            'duration_unit' => ['required', 'in:bulan,tahun'],
         ]);
+
+$data['start_date'] = now()->toDateString();
+        $data['end_date'] = $this->calculateEndDate($data['duration_quantity'], $data['duration_unit'], $data['start_date']);
+        $data['price'] = $this->calculatePrice($data['package'], $data['duration_quantity'], $data['duration_unit']);
+
+        unset($data['duration_quantity'], $data['duration_unit']);
 
         Membership::create($data);
 
         return redirect()->route('memberships.index')->with('success', 'Membership berhasil ditambahkan.');
     }
 
+protected function calculateEndDate(int $quantity, string $unit, string $startDate): string
+    {
+        $start = \Carbon\Carbon::parse($startDate);
+
+        if ($unit === 'tahun') {
+            return $start->addYears($quantity)->toDateString();
+        }
+
+        return $start->addMonths($quantity)->toDateString();
+    }
+
+    protected function calculatePrice(string $package, int $quantity, string $unit): float
+    {
+        $rates = [
+            'gold'   => ['bulan' => 1000000,  'tahun' => 12000000],
+            'silver' => ['bulan' => 500000,   'tahun' => 6000000],
+            'bronze' => ['bulan' => 300000,   'tahun' => 3600000],
+        ];
+
+        $package = strtolower($package);
+
+        if (!isset($rates[$package])) {
+            return 0;
+        }
+
+        return (float) $rates[$package][$unit] * $quantity;
+    }
+
     public function show(Membership $membership)
     {
+        $this->autoExpire();
+
         $membership->load(['member', 'trainer']);
 
         return view('memberships.show', compact('membership'));
@@ -56,7 +101,7 @@ class MembershipController extends Controller
         return view('memberships.edit', compact('membership', 'members', 'trainers'));
     }
 
-    public function update(Request $request, Membership $membership)
+public function update(Request $request, Membership $membership)
     {
         $data = $request->validate([
             'member_id' => ['required', 'exists:members,id'],
@@ -64,18 +109,23 @@ class MembershipController extends Controller
             'package' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
             'status' => ['required', 'in:active,inactive,suspended,cancelled,expired'],
-            'start_date' => ['required', 'date'],
-            'end_date' => ['required', 'date', 'after_or_equal:start_date'],
-            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'duration_quantity' => ['required', 'integer', 'min:1'],
+            'duration_unit' => ['required', 'in:bulan,tahun'],
         ]);
 
-        if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
-            if ($membership->photo && \Storage::disk('public')->exists($membership->photo)) {
-                \Storage::disk('public')->delete($membership->photo);
-            }
-            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        if ($membership->start_date) {
+            $membership->end_date = $this->calculateEndDate(
+                $data['duration_quantity'],
+                $data['duration_unit'],
+                $membership->start_date->toDateString()
+            );
         }
+
+$data['price'] = $this->calculatePrice($data['package'], $data['duration_quantity'], $data['duration_unit']);
+
+        unset($data['duration_quantity'], $data['duration_unit']);
+
+        $data['end_date'] = $membership->end_date;
 
         $membership->update($data);
 
@@ -89,4 +139,3 @@ class MembershipController extends Controller
         return redirect()->route('memberships.index')->with('success', 'Membership berhasil dihapus.');
     }
 }
-

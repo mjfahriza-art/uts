@@ -36,12 +36,12 @@
             background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
             box-shadow: 4px 0 20px rgba(0,0,0,0.15) !important;
         }
-        .sidebar-brand {
+.sidebar-brand {
             background: rgba(255,255,255,0.06) !important;
             border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-            padding: 1.2rem 1rem !important;
+            padding: 0.5rem 1rem !important;
             transition: all 0.3s ease;
-            min-height: 70px;
+            min-height: 52px;
         }
         .sidebar-brand:hover {
             background: rgba(255,255,255,0.1) !important;
@@ -66,15 +66,15 @@
             font-weight: 700 !important;
             text-transform: uppercase !important;
             letter-spacing: 2px !important;
-            color: rgba(255,255,255,0.4) !important;
-            padding: 0.9rem 1.25rem 0.4rem !important;
+color: rgba(255,255,255,0.4) !important;
+            padding: 0.3rem 1.25rem 0.15rem !important;
         }
         .sidebar .nav-item {
-            margin: 2px 10px !important;
+            margin: 0px 10px !important;
         }
         .sidebar .nav-item .nav-link {
             border-radius: 8px !important;
-            padding: 10px 14px !important;
+            padding: 5px 14px !important;
             font-weight: 500 !important;
             font-size: 0.88rem !important;
             color: rgba(255,255,255,0.65) !important;
@@ -107,9 +107,9 @@
             color: #e94560 !important;
             transition: color 0.5s ease !important;
         }
-        .sidebar .sidebar-divider {
+.sidebar .sidebar-divider {
             border-color: rgba(255,255,255,0.07) !important;
-            margin: 6px 12px !important;
+            margin: 2px 12px !important;
         }
         /* Sidebar toggle button di bawah */
         .sidebar #sidebarToggle {
