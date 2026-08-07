@@ -43,7 +43,7 @@
                                 <td>{{ $loop->iteration + ($members->currentPage() - 1) * $members->perPage() }}</td>
                                 <td>
                                     @if($member->photo)
-                                        <img src="{{ asset('storage/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+<img src="{{ url('photo/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
                                     @else
                                         <span class="text-muted">-</span>
                                     @endif

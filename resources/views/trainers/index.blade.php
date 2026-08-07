@@ -44,7 +44,7 @@
                                 <td>{{ $trainer->id }}</td>
                                 <td>
                                     @if($trainer->photo)
-                                        <img src="{{ asset('storage/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+<img src="{{ url('photo/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
                                     @else
                                         <span class="text-muted">-</span>
                                     @endif

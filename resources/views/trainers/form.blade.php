@@ -47,7 +47,7 @@
             <label for="photo" class="form-label">Foto</label>
             @if($trainer->photo)
                 <div class="mb-2">
-                    <img src="{{ asset('storage/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="max-height: 150px;">
+<img src="{{ url('photo/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-thumbnail" style="max-height: 150px;">
                 </div>
             @endif
             <input id="photo" name="photo" type="file" class="form-control" accept="image/*">

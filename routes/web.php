@@ -8,10 +8,31 @@ use App\Models\Trainer;
 use App\Models\Member;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
 
 Route::get('/', function () {
     return redirect('/login');
 });
+
+// Menyajikan file storage (foto) langsung dari storage/app/public tanpa symlink.
+// Pakai path /photo/ (bukan /storage/) agar tidak bentrok dengan folder fisik
+// public/storage di shared hosting (mis. InfinityFree) yang melayani file statis.
+Route::get('/photo/{path}', function (string $path) {
+    $path = urldecode($path);
+
+    // Cegah path traversal
+    if (str_contains($path, '..')) {
+        abort(404);
+    }
+
+    $fullPath = storage_path('app/public/' . $path);
+
+    if (!File::exists($fullPath) || !is_file($fullPath)) {
+        abort(404);
+    }
+
+    return response()->file($fullPath);
+})->where('path', '.*');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

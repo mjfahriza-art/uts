@@ -59,7 +59,7 @@
             <label for="photo" class="form-label">Foto</label>
             @if($member->photo)
                 <div class="mb-2">
-                    <img src="{{ asset('storage/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="max-height: 150px;">
+<img src="{{ url('photo/' . $member->photo) }}" alt="Foto {{ $member->name }}" class="img-thumbnail" style="max-height: 150px;">
                 </div>
             @endif
             <input id="photo" name="photo" type="file" class="form-control" accept="image/*">

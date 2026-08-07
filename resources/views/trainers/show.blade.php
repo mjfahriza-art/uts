@@ -20,7 +20,7 @@
                 <div class="card-body">
                     @if($trainer->photo)
                         <div class="text-center mb-4">
-                            <img src="{{ asset('storage/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: contain;">
+<img src="{{ url('photo/' . $trainer->photo) }}" alt="Foto {{ $trainer->name }}" class="img-fluid rounded shadow" style="max-height: 300px; object-fit: contain;">
                         </div>
                     @endif
                     <div class="row mb-3">
